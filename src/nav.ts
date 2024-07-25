@@ -16,15 +16,15 @@ class _Nav<P extends object, PKey extends Key<P> = Key<P>> {
     public recordRaw: RecordRaw
   ) {}
   /* use params */
-  useP<K extends PKey, Default extends NonNullable<P[K]>>(
+  useP<K extends PKey, Default extends NonNullable<P[K]> | void | undefined>(
     k: K,
     defaultValue?: Default
   ): WritableComputedRef<
-    Default extends null | undefined ? P[K] | undefined : NonNullable<P[K]>
+    Default extends void | undefined ? P[K] | undefined : NonNullable<P[K]>
   > {
     return computed({
-      get: () => {
-        return this.de()?.[k] ?? defaultValue!
+      get: (): any => {
+        return this.de()?.[k] ?? defaultValue
       },
       set: val => {
         this.go({ ...this.de()!, [k]: val })
