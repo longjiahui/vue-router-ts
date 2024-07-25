@@ -1,0 +1,29 @@
+{
+  "name": "@anfo/vue-router-ts",
+  "version": "1.0.0",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "./dist"
+  ],
+  "scripts": {
+    "dev": "tsc-watch",
+    "build": "tsc",
+    "lint": "tsc --noEmit",
+    "test": "NODE_ENV=test tsc-watch -P tsconfig.test.json --onSuccess \"node --experimental-require-module ./node_modules/mocha/bin/_mocha --recursive ./dist_test/**/*.spec.js\"",
+    "prepublishOnly": "pnpm build"
+  },
+  "author": "Anfo",
+  "license": "MIT",
+  "description": "",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "tsc-watch": "^6.2.0",
+    "typescript": "^5.5.4",
+    "vue": "^3.4.34"
+  },
+  "dependencies": {
+    "vue-router": "^4.4.0"
+  }
+}
